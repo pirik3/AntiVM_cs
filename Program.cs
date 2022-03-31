@@ -35,7 +35,7 @@ namespace AntiVM_KnightOnLine
             ColoredConsoleWrite(ConsoleColor.White, "[4] Hyper-V         ", ConsoleColor.Red, uyari);
             ColoredConsoleWrite(ConsoleColor.White, "[5] KVM             ", ConsoleColor.Red, uyari);
             ColoredConsoleWrite(ConsoleColor.White, "[6] Windows Sandbox ", ConsoleColor.Red, uyari);
-            Console.Write("\r\n[*] Islem yapilacak VM? -> ");
+            Console.Write("\n[*] Islem yapilacak VM? -> ");
 
             switch (Console.ReadLine())
             {
