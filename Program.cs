@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using Microsoft.Win32;
 
-namespace AntiVM_KnightOnLine
+namespace AntiVM_cs
 {
     class Program
     {
         static void Main()
         {
-            MainMenu();        
+            MainMenu();
         }
 
         private static Random random = new Random();
@@ -35,7 +35,7 @@ namespace AntiVM_KnightOnLine
             ColoredConsoleWrite(ConsoleColor.White, "[4] Hyper-V         ", ConsoleColor.Red, uyari);
             ColoredConsoleWrite(ConsoleColor.White, "[5] KVM             ", ConsoleColor.Red, uyari);
             ColoredConsoleWrite(ConsoleColor.White, "[6] Windows Sandbox ", ConsoleColor.Red, uyari);
-            Console.Write("\n[*] Islem yapilacak VM? -> ");
+            Console.Write("\n[*] Islem yapilacak VM?? -> ");
 
             switch (Console.ReadLine())
             {
@@ -43,7 +43,8 @@ namespace AntiVM_KnightOnLine
                     VirtualBox();
                     return false;
                 case "2":
-                    VMware();
+                    VMware();                   
+
                     return true;
                 case "3":
                     Console.Write("\r\n" + uyari);
@@ -68,16 +69,16 @@ namespace AntiVM_KnightOnLine
             string regedit2 = @"HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\"; //SystemBiosVersion
             string regedit3 = @"HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\BIOS\"; //BIOSVendor , BIOSVersion , SystemManufacturer , SystemProductName , SystemVersion
             string cart = (string)Registry.GetValue(regedit1, "DriverDesc", "");
-            Console.SetCursorPosition(0,11);
+            Console.SetCursorPosition(0, 11);
             //Console.WriteLine("grafik kart: {0}", cart);
             Console.SetCursorPosition(0, 12);
             ClearCurrentConsoleLine();
 
             // ilk once vmtools yuklenmesi gerekiyor. Sonra regedit islemleri yapilacak.
-            
+            // Mac degistirme eklenmeis gerek. 00:0C virtual machine VMware baslangic mac adresi kontrole takiliyor.
 
             #region REgedit BIOS editleme.
-            Registry.SetValue(regedit1, "DriverDesc", "NVIDIA GeForce GTX "+ RandomString(4));
+            Registry.SetValue(regedit1, "DriverDesc", "NVIDIA GeForce GTX " + RandomString(4));
             string[] SystemBiosVersionStrings = { "_ASUS_ - " + RandomString(6), RandomString(6), "American Megatrends - " + RandomString(6) };
             Registry.SetValue(regedit2, "SystemBiosVersion", SystemBiosVersionStrings);
             #endregion
